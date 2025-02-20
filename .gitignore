@@ -1,4 +1,4 @@
 AppSupport/
 .DS_Store
 
-tmux/plugins/(?:tpm/.*)
+tmux/.config/tmux/plugins/
