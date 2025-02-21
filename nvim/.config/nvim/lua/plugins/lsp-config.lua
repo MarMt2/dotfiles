@@ -2,13 +2,13 @@ return {
     {
         "williamboman/mason.nvim",
         lazy = false,
-        opts = {
-        },
+        opts = {},
     },
     {
         "williamboman/mason-lspconfig.nvim",
         lazy = false,
         opts = {
+            ensure_installed = { "clangd", "cmake", "lua_ls", "pylsp", "rust_analyzer" },
             auto_install = true,
         },
     },
@@ -22,11 +22,29 @@ return {
             lspconfig.lua_ls.setup({
                 capabilities = capabilities
             })
+
             lspconfig.clangd.setup({
-                capabilities = capabilities
+                capabilities = capabilities,
+                cmd = {
+                   "clangd",
+                    "--background-index",
+                    "--compile-commands-dir=build",
+                    "--all-scopes-completion",
+                    "--clang-tidy",
+                    "--cross-file-rename",
+                    "--completion-style=detailed",
+                    "--header-insertion=iwyu",
+                    "--pch-storage=memory",
+                },
             })
+
             lspconfig.pylsp.setup({
                 capabilities = capabilities
+            })
+
+            -- CMake
+            lspconfig.cmake.setup({
+                capabilities = capabilities,
             })
 
             vim.api.nvim_create_autocmd('LspAttach', {
@@ -43,6 +61,15 @@ return {
                     vim.keymap.set('n', '<Leader>f', function()
                         vim.lsp.buf.format { async = true }
                     end, opts)
+
+                    -- Enable autoformat on save
+                    vim.api.nvim_create_autocmd('BufWritePre', {
+                        group = vim.api.nvim_create_augroup('FormatOnSave', { clear = true }),
+                        buffer = ev.buf,
+                        callback = function()
+                            vim.lsp.buf.format { async = false }
+                        end,
+                    })
                 end,
             })
         end,
