@@ -11,13 +11,16 @@ return {
     },
     {
         "hrsh7th/nvim-cmp",
+        dependencies = {
+            "hrsh7th/cmp-path",
+        },
         config = function()
             local cmp = require 'cmp'
             local ls = require('luasnip')
             require("luasnip.loaders.from_vscode").lazy_load()
 
-            vim.keymap.set({"i", "s"}, "<C-L>", function() ls.jump( 1) end, {silent = true})
-            vim.keymap.set({"i", "s"}, "<C-J>", function() ls.jump(-1) end, {silent = true})
+            vim.keymap.set({ "i", "s" }, "<C-L>", function() ls.jump(1) end, { silent = true })
+            vim.keymap.set({ "i", "s" }, "<C-J>", function() ls.jump(-1) end, { silent = true })
 
             cmp.setup({
                 snippet = {
