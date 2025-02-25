@@ -18,5 +18,3 @@ alias ls="ls -G"
 #enable lowercase insensitive completion
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
-#set editor for fpp
-export FPP_EDITOR='nvim'
