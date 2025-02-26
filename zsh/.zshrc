@@ -5,10 +5,6 @@ compinit
 #initialize starship
 eval "$(starship init zsh)"
 
-#initialize tmuxifier
-export PATH="$HOME/.config/tmux/plugins/tmuxifier/bin:$PATH"
-eval "$(tmuxifier init -)"
-
 #alias for parallel make
 alias makep="make -j14"
 
