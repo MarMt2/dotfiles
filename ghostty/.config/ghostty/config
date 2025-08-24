@@ -1,0 +1,3 @@
+font-family = "Hack Nerd Font Mono"
+theme = catppuccin-mocha
+macos-titlebar-style = "hidden"

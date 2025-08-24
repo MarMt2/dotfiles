@@ -1,0 +1,17 @@
+[[session]]
+name = "Default"
+path = "{}"
+windows = [ "Editor" ]
+
+
+[[window]]
+name = "Editor"
+startup_script = "nvim"
+
+[[window]]
+name = "Terminal"
+
+[[session]]
+name = "dotfiles"
+path = "~/dotfiles/"
+windows = [ "Editor", "Terminal" ]
