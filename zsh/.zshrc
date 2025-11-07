@@ -12,7 +12,15 @@ alias makep="make -j14"
 alias ls="ls -G"
 
 # create a docker container for pwn ctf
-alias ctfdocker="docker run --rm -v $PWD:/pwd --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -d --name ctf -i ctf:ubuntu22.04"
+ctfdocker() {
+    docker run --rm -v $(pwd):/pwd --platform linux/amd64 --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -d --name ctf -i ctf:ubuntu22.04
+}
+
+# shorthand to get to the icloud folder
+alias icloud="cd /Users/marmt2/Library/Mobile\ Documents/com~apple~CloudDocs/"
+
+# shorthand to get to the shared folder for VM's
+alias VM="~/Documents/CTF/VM_shared/"
 
 #enable lowercase insensitive completion
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
