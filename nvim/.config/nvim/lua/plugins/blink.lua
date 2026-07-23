@@ -9,7 +9,7 @@ return {
     {
         'saghen/blink.cmp',
         dependencies = { 'rafamadriz/friendly-snippets' },
-        version = '*',
+        version = '1.*',
 
         ---@module 'blink.cmp'
         ---@type blink.cmp.Config
@@ -55,7 +55,8 @@ return {
         'saghen/blink.pairs',
         version = '*',
 
-        dependencies = 'saghen/blink.download',
+        dependencies = 'saghen/blink.lib',
+        build = function() require('blink.pairs').download():pwait(60000) end,
 
         --- @module 'blink.pairs'
         --- @type blink.pairs.Config

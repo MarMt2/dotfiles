@@ -199,13 +199,9 @@ automatically-unhide-macos-hidden-apps = false
 
 # force certain workspaces to certain monitors
 [workspace-to-monitor-force-assignment]
-C = 'main'
-D = 'main'
-M = 'main'
-N = 'main'
-S = 'main'
 
 # Set some default workspaces for certain apps
+# aerospace list-apps // to get app id's
 [[on-window-detected]]
 if.app-id ='com.apple.iCal'
 run = ['move-node-to-workspace C']
@@ -238,4 +234,12 @@ run = ['move-node-to-workspace W']
 [[on-window-detected]]
 if.app-id ='app.zen-browser.zen'
 if.window-title-regex-substring = 'Picture-in-Picture'
+run = ['layout floating']
+
+[[on-window-detected]]
+if.app-id ='net.java.openjdk.java'
+run = ['layout floating']
+
+[[on-window-detected]]
+if.app-id ='org.python.python'
 run = ['layout floating']

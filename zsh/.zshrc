@@ -59,5 +59,12 @@ bindkey -M vicmd '\es' sesh-sessions
 bindkey -M viins '\es' sesh-sessions
 
 # ctftool configuration file
-export CTFTOOL_CONFIG="~/.config/ctftool/config.toml"
+export CTFTOOL_CONFIG="/Users/marmt2/.config/ctftool/config.toml"
+# enable ctftool autocompletions
 export FPATH="/Users/marmt2/Documents/CTF/tools/ctftool/completions/zsh:$FPATH"
+
+# some aliases for ctftool
+alias newchall="ctftool chall create"
+alias solvechall="ctftool chall solve"
+alias sharechall="ctftool chall vmshare"
+alias unsharechall="ctftool chall vmrm"

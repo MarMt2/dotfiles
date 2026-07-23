@@ -4,6 +4,8 @@ local opts = function(desc, extra)
 end
 
 -- ==== General keymaps =====
+map("n", "<C-u>", "<C-u>zz", opts("Quick Save", { silent = false }))
+map("n", "<C-d>", "<C-d>zz", opts("Quick Save", { silent = false }))
 map("n", "<leader>w", "<cmd>w<cr>", opts("Quick Save", { silent = false }))
 map("n", "<leader>q", "<cmd>q<cr>", opts("Quick Quit", { silent = false }))
 map("n", "<leader>e", function() require("oil").toggle_float() end, opts("File Tree"))
@@ -136,3 +138,19 @@ diagnostic_jump("<leader>pw", -1, "Prev Warning", vim.diagnostic.severity.WARN)
 -- ==== Window Management ====
 map("n", "<leader>rw", ":RotateWindows<cr>", opts("Rotate Windows"))
 map("n", "<leader>m", ":MaximizerToggle<cr>", opts("Maximise Window"))
+
+-- ==== Formatting ====
+
+--local function formatting()
+--    return function()
+--        -- Format only if there's at least one LSP client with formatting capability
+--        if #vim.lsp.get_clients({
+--                bufnr = 0,
+--                method = "textDocument/formatting"
+--            }) > 0 then
+--            vim.lsp.buf.format({ async = false })
+--        end
+--    end
+--end
+
+map("n", "<leader>cf", vim.lsp.buf.format, opts("LSP: Format Code"))

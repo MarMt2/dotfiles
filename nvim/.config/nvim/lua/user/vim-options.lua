@@ -56,19 +56,19 @@ vim.opt.colorcolumn = "100" -- Place bar to encourage good line length
 -- Clipboard
 vim.opt.clipboard = 'unnamedplus' -- Use system clipboard
 
--- Formatting on save
-vim.api.nvim_create_autocmd("BufWritePre", {
-    group = vim.api.nvim_create_augroup("AutoFormat", { clear = true }),
-    callback = function()
-        -- Format only if there's at least one LSP client with formatting capability
-        if #vim.lsp.get_clients({
-                bufnr = 0,
-                method = "textDocument/formatting"
-            }) > 0 then
-            vim.lsp.buf.format({ async = false })
-        end
-    end,
-})
+---- Formatting on save
+--vim.api.nvim_create_autocmd("BufWritePre", {
+--    group = vim.api.nvim_create_augroup("AutoFormat", { clear = true }),
+--    callback = function()
+--        -- Format only if there's at least one LSP client with formatting capability
+--        if #vim.lsp.get_clients({
+--                bufnr = 0,
+--                method = "textDocument/formatting"
+--            }) > 0 then
+--            vim.lsp.buf.format({ async = false })
+--        end
+--    end,
+--})
 
 -- Diagnostic Config
 vim.diagnostic.config {
@@ -90,7 +90,7 @@ vim.diagnostic.config {
 }
 
 -- disable lsp logs as they get huge and all lsps send to cerr anyway :,)
-vim.lsp.set_log_level(vim.log.levels.OFF)
+vim.lsp.log.set_level(vim.log.levels.OFF)
 
 -- allow custom loading of .vimrc files for project specific settings
 vim.o.exrc = true
