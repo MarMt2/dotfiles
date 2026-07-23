@@ -1,0 +1,4 @@
+[paths]
+shared_dir = "/Users/marmt2/Documents/CTF/VM_shared/"
+script_dir = "/Users/marmt2/Documents/CTF/cheat_sheets/scripts/"
+ctfs_dir = "/Users/marmt2/Documents/CTF/ctfs/"

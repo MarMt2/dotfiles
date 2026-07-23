@@ -11,6 +11,10 @@ alias makep="make -j14"
 #enable colors for ls
 alias ls="ls -G"
 
+# python venv aliases
+alias ctfpython="source ~/.venv/ctf/bin/activate"
+alias venvpython="source ~/.venv/default/bin/activate"
+
 # create a docker container for pwn ctf
 ctfdocker() {
     docker run --rm -v $(pwd):/pwd --platform linux/amd64 --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -d --name ctf -i ctf:ubuntu22.04
@@ -53,3 +57,7 @@ zle     -N             sesh-sessions
 bindkey -M emacs '\es' sesh-sessions
 bindkey -M vicmd '\es' sesh-sessions
 bindkey -M viins '\es' sesh-sessions
+
+# ctftool configuration file
+export CTFTOOL_CONFIG="~/.config/ctftool/config.toml"
+export FPATH="/Users/marmt2/Documents/CTF/tools/ctftool/completions/zsh:$FPATH"
